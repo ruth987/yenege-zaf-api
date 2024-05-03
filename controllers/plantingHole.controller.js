@@ -11,8 +11,19 @@ const createHole = async (req, res) => {
   }
 };
 
+// Find All holes
+const getAllHoles = async (req, res) => {
+  try {
+    const plantingHoles = await PlantingHole.find({});
+    res.send(plantingHoles);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
 
 
 module.exports = {
     createHole,
+    getAllHoles,
 };
