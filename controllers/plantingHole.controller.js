@@ -35,11 +35,28 @@ const getHole = async (req, res) => {
   }
 };
 
-
+// Update Hole
+const updateHole = async (req, res) => {
+  try {
+    const plantingHole = await PlantingHole.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      { new: true, runValidators: true }
+    );
+    if (!plantingHole) {
+      return res.status(404).send();
+    }
+    res.send(plantingHole);
+  } catch (err) {
+    res.status(400).send(err);
+  }
 };
+
 
 module.exports = {
     createHole,
     getAllHoles,
     getHole,
+    updateHole,
+    ,
 };
