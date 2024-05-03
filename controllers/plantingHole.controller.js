@@ -21,9 +21,25 @@ const getAllHoles = async (req, res) => {
   }
 };
 
+// Find a hole by ID
+const getHole = async (req, res) => {
+  const _id = req.params.id;
+  try {
+    const plantingHole = await PlantingHole.findById(_id);
+    if (!plantingHole) {
+      return res.status(404).send();
+    }
+    res.send(plantingHole);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
 
+
+};
 
 module.exports = {
     createHole,
     getAllHoles,
+    getHole,
 };
