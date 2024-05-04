@@ -10,6 +10,7 @@ const plantingHolesSchema = new Schema({
   status: {
     type: String,
     enum: ['available', 'planted', 'damaged'],
+    default: 'available',
     required: true,
   },
   species_type: String,
