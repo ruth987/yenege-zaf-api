@@ -6,6 +6,7 @@ const app = express();
 const authRoutes = require('./routes/auth.route');
 const protectedRoute = require('./routes/protected.route');
 const userRoute = require('./routes/user.route');
+const plantingsiteRoute = require('./routes/plantingsite.route')
 
 const port = process.env.PORT || 3000;
 
@@ -13,6 +14,7 @@ app.use(express.json());
 app.use('/auth', authRoutes);
 app.use('/protected', protectedRoute);
 app.use('/users', userRoute);
+app.use('/plantingsite', plantingsiteRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello from your Node.js project!");

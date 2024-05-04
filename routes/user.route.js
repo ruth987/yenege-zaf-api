@@ -1,18 +1,22 @@
-const express = require('express');
-const router = express.Router();
-const auth = require('../middleware/authMiddleware');
-const { getUsers, getUser, deleteUser, updateUser } = require('../controllers/user.controller');
+const express = require('express')
+const router = express.Router()
+const auth = require('../middleware/authMiddleware')
+const {
+    getUsers,
+    getUser,
+    deleteUser,
+    updateUser,
+    checkPermission
+} = require('../controllers/user.controller')
 
+router.get('/', auth, getUsers)
 
-router.get('/', auth, getUsers);
+router.get('/:id', auth, getUser)
 
-router.get('/:id', auth, getUser);
+router.delete('/:id', auth, deleteUser)
 
-router.delete('/:id', auth, deleteUser);
+router.put('/:id', auth, updateUser)
 
-router.put('/:id', auth, updateUser);
+router.post('/location-permission', auth, )
 
-
-
-module.exports = router;
-
+module.exports = router
